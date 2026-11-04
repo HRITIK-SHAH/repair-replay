@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Northstar / RepairReplay demo
 
 A local React + Vite consumer-tech storefront with eight fictional products and deterministic repair scenarios. All illustrations, product data, and fonts are local. No backend, payments, external requests, or customer-data uploads are used.
@@ -69,3 +70,7 @@ npx.cmd playwright show-trace '<trace path returned above>'
 Desktop and mobile screenshots are at `artifacts/northstar-desktop.png` and `artifacts/northstar-mobile.png`. Browser layout checks cover 375px and 768px widths, including populated cart and checkout. These automated checks and manual screenshot inspection are not a full assistive-technology audit.
 
 See [INTEGRATION.md](INTEGRATION.md) for repair-workspace isolation and trusted test execution. There is no live RepairReplay service in this supplied workspace, so integration with its agent sandbox remains the responsibility of that service's owner.
+=======
+# repair-replay
+Meta-powered bug repair tool that reproduces website failures, proposes source-code fixes, and verifies repairs with Playwright tests.
+>>>>>>> 130f05a6ae3322b6c7e25a5759f29f2d06eecbe6
