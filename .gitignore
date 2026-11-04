@@ -1,0 +1,6 @@
+node_modules/
+demo-shop/node_modules/
+demo-shop/dist/
+test-results/
+playwright-report/
+.env

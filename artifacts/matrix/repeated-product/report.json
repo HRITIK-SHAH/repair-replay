@@ -1,0 +1,565 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\KIIT\\Downloads\\META1\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--reporter=json",
+      "--output=artifacts/matrix/repeated-product/browser"
+    ],
+    "configFile": "C:\\Users\\KIIT\\Downloads\\META1\\playwright.config.js",
+    "rootDir": "C:/Users/KIIT/Downloads/META1/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/KIIT/Downloads/META1/artifacts/matrix/repeated-product/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/KIIT/Downloads/META1/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "*.spec.js"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\matrix\\repeated-product\\browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\KIIT\\Downloads\\META1\\tests",
+        "snapshotDir": "C:\\Users\\KIIT\\Downloads\\META1\\tests",
+        "testIgnore": [],
+        "testMatch": "*.spec.js",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node demo-shop/node_modules/vite/bin/vite.js \"C:\\Users\\KIIT\\Downloads\\META1\\demo-shop\" --host 127.0.0.1 --port 5173 --strictPort",
+      "url": "http://127.0.0.1:5173",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "store.spec.js",
+      "file": "store.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "search, category, sorting and empty results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:33:56.444Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-9eeea26e3e5db476287d",
+          "file": "store.spec.js",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "add one product and persist after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:33:58.027Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-4f91ab6cc595cb524732",
+          "file": "store.spec.js",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "repeated-product calculation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6061,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('payable-total')\nExpected: \u001b[32m\"₹\u001b[7m1,497\u001b[27m.00\"\u001b[39m\nReceived: \u001b[31m\"₹\u001b[7m798\u001b[27m.00\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('payable-total') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('payable-total')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-testid=\"payable-total\">₹798.00</dd>\u001b[22m\n\u001b[2m       - unexpected value \"₹798.00\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('payable-total')\nExpected: \u001b[32m\"₹\u001b[7m1,497\u001b[27m.00\"\u001b[39m\nReceived: \u001b[31m\"₹\u001b[7m798\u001b[27m.00\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('payable-total') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('payable-total')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-testid=\"payable-total\">₹798.00</dd>\u001b[22m\n\u001b[2m       - unexpected value \"₹798.00\"\u001b[22m\n\n    at C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js:49:51",
+                    "location": {
+                      "file": "C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js",
+                      "column": 51,
+                      "line": 49
+                    },
+                    "snippet": "  47 |   await bag(page);\n  48 |   await expect(page.getByLabel(\"Loop charging cable quantity\")).toHaveText(\"2\");\n> 49 |   await expect(page.getByTestId(\"payable-total\")).toHaveText(\"₹1,497.00\");\n     |                                                   ^\n  50 | });\n  51 | test(\"quantity updates and limits\", async ({ page }) => {\n  52 |   await add(page, \"Loop charging cable\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js",
+                        "column": 51,
+                        "line": 49
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('payable-total')\nExpected: \u001b[32m\"₹\u001b[7m1,497\u001b[27m.00\"\u001b[39m\nReceived: \u001b[31m\"₹\u001b[7m798\u001b[27m.00\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('payable-total') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('payable-total')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-testid=\"payable-total\">₹798.00</dd>\u001b[22m\n\u001b[2m       - unexpected value \"₹798.00\"\u001b[22m\n\n\n  47 |   await bag(page);\n  48 |   await expect(page.getByLabel(\"Loop charging cable quantity\")).toHaveText(\"2\");\n> 49 |   await expect(page.getByTestId(\"payable-total\")).toHaveText(\"₹1,497.00\");\n     |                                                   ^\n  50 | });\n  51 | test(\"quantity updates and limits\", async ({ page }) => {\n  52 |   await add(page, \"Loop charging cable\");\n    at C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js:49:51"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:33:59.010Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\matrix\\repeated-product\\browser\\store-repeated-product-calculation\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\matrix\\repeated-product\\browser\\store-repeated-product-calculation\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\matrix\\repeated-product\\browser\\store-repeated-product-calculation\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js",
+                    "column": 51,
+                    "line": 49
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-0e8eef6347bf8b7a8431",
+          "file": "store.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "quantity updates and limits",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6269,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('payable-total')\nExpected: \u001b[32m\"₹\u001b[7m1,497\u001b[27m.00\"\u001b[39m\nReceived: \u001b[31m\"₹\u001b[7m798\u001b[27m.00\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('payable-total') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('payable-total')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-testid=\"payable-total\">₹798.00</dd>\u001b[22m\n\u001b[2m       - unexpected value \"₹798.00\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('payable-total')\nExpected: \u001b[32m\"₹\u001b[7m1,497\u001b[27m.00\"\u001b[39m\nReceived: \u001b[31m\"₹\u001b[7m798\u001b[27m.00\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('payable-total') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('payable-total')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-testid=\"payable-total\">₹798.00</dd>\u001b[22m\n\u001b[2m       - unexpected value \"₹798.00\"\u001b[22m\n\n    at C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js:60:51",
+                    "location": {
+                      "file": "C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js",
+                      "column": 51,
+                      "line": 60
+                    },
+                    "snippet": "  58 |     .getByRole(\"button\", { name: \"Increase Loop charging cable\" })\n  59 |     .click();\n> 60 |   await expect(page.getByTestId(\"payable-total\")).toHaveText(\"₹1,497.00\");\n     |                                                   ^\n  61 |   await page\n  62 |     .getByRole(\"button\", { name: \"Decrease Loop charging cable\" })\n  63 |     .click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js",
+                        "column": 51,
+                        "line": 60
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('payable-total')\nExpected: \u001b[32m\"₹\u001b[7m1,497\u001b[27m.00\"\u001b[39m\nReceived: \u001b[31m\"₹\u001b[7m798\u001b[27m.00\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByTestId('payable-total') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('payable-total')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-testid=\"payable-total\">₹798.00</dd>\u001b[22m\n\u001b[2m       - unexpected value \"₹798.00\"\u001b[22m\n\n\n  58 |     .getByRole(\"button\", { name: \"Increase Loop charging cable\" })\n  59 |     .click();\n> 60 |   await expect(page.getByTestId(\"payable-total\")).toHaveText(\"₹1,497.00\");\n     |                                                   ^\n  61 |   await page\n  62 |     .getByRole(\"button\", { name: \"Decrease Loop charging cable\" })\n  63 |     .click();\n    at C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js:60:51"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:06.044Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\matrix\\repeated-product\\browser\\store-quantity-updates-and-limits\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\matrix\\repeated-product\\browser\\store-quantity-updates-and-limits\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\matrix\\repeated-product\\browser\\store-quantity-updates-and-limits\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\KIIT\\Downloads\\META1\\tests\\store.spec.js",
+                    "column": 51,
+                    "line": 60
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-aafb7fed7d99ba04335d",
+          "file": "store.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "specific product removal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1116,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:13.555Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-c3929b8474d65138c5ee",
+          "file": "store.spec.js",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "stale total after removal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1123,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:14.846Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-bc336cd4a7433e721c8a",
+          "file": "store.spec.js",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "remove final item and empty checkout guard",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1001,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:16.005Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-4836a9f94d814eaba205",
+          "file": "store.spec.js",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "discount eligibility and arithmetic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1233,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:17.025Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-73f11c2a67b49c169f67",
+          "file": "store.spec.js",
+          "line": 109,
+          "column": 1
+        },
+        {
+          "title": "checkout validation and simulated order",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1517,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:18.277Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-b51e44e4ae047959c4f8",
+          "file": "store.spec.js",
+          "line": 123,
+          "column": 1
+        },
+        {
+          "title": "keyboard dialog entry, tab containment, dismissal and restoration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1373,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:19.815Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-d222238b3f12f81e3f5a",
+          "file": "store.spec.js",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "invalid storage, unknown route and responsive layouts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2516,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T14:34:21.209Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "040dc16dee2cfa236583-f192685ce07d821b9a5b",
+          "file": "store.spec.js",
+          "line": 198,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T14:33:54.572Z",
+    "duration": 29852.791,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

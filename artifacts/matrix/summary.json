@@ -1,0 +1,46 @@
+[
+  {
+    "name": "baseline",
+    "buildPassed": true,
+    "passed": 11,
+    "failed": [],
+    "designatedFailureObserved": true,
+    "unexpectedFailures": [],
+    "matchesMatrix": true
+  },
+  {
+    "name": "stale-total",
+    "buildPassed": true,
+    "passed": 10,
+    "failed": [
+      "stale total after removal"
+    ],
+    "designatedFailureObserved": true,
+    "unexpectedFailures": [],
+    "matchesMatrix": true
+  },
+  {
+    "name": "repeated-product",
+    "buildPassed": true,
+    "passed": 9,
+    "failed": [
+      "repeated-product calculation",
+      "quantity updates and limits"
+    ],
+    "designatedFailureObserved": true,
+    "unexpectedFailures": [],
+    "matchesMatrix": true
+  },
+  {
+    "name": "wrong-removal",
+    "buildPassed": true,
+    "passed": 9,
+    "failed": [
+      "specific product removal",
+      "stale total after removal"
+    ],
+    "designatedFailureObserved": true,
+    "unexpectedFailures": [],
+    "matchesMatrix": true
+  }
+]

@@ -1,0 +1,149 @@
+import React from "react";
+import { products, money } from "./products.js";
+import Artwork from "./Artwork.jsx";
+export function removeItem(cart, id) {
+  return cart.filter((item) => item.id !== id);
+}
+export default function Cart({
+  cart,
+  setCart,
+  pricing,
+  code,
+  setCode,
+  onCheckout,
+}) {
+  return (
+    <section className="cart-page">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">YOUR EVERYDAY ESSENTIALS</p>
+          <h1>Your bag</h1>
+        </div>
+        <a href="#shop">Continue shopping ↗</a>
+      </div>
+      {!cart.length ? (
+        <div className="empty">
+          <h2>A little room for something good.</h2>
+          <p>Your bag is empty. Explore thoughtfully designed accessories.</p>
+          <a className="button" href="#shop">
+            Explore the collection
+          </a>
+        </div>
+      ) : (
+        <div className="cart-layout">
+          <div>
+            {cart.map((item) => {
+              const p = products.find((p) => p.id === item.id);
+              return (
+                <article className="cart-item" key={p.id} aria-label={p.name}>
+                  <div className="cart-art">
+                    <Artwork product={p} />
+                  </div>
+                  <div>
+                    <p className="eyebrow">{p.category}</p>
+                    <h2>{p.name}</h2>
+                    <p>{money(p.price)} each</p>
+                    <div className="quantity">
+                      <button
+                        aria-label={`Decrease ${p.name}`}
+                        disabled={item.quantity === 1}
+                        onClick={() =>
+                          setCart(
+                            cart.map((x) =>
+                              x.id === p.id
+                                ? { ...x, quantity: x.quantity - 1 }
+                                : x,
+                            ),
+                          )
+                        }
+                      >
+                        −
+                      </button>
+                      <span aria-label={`${p.name} quantity`}>
+                        {item.quantity}
+                      </span>
+                      <button
+                        aria-label={`Increase ${p.name}`}
+                        disabled={item.quantity === 9}
+                        onClick={() =>
+                          setCart(
+                            cart.map((x) =>
+                              x.id === p.id
+                                ? { ...x, quantity: x.quantity + 1 }
+                                : x,
+                            ),
+                          )
+                        }
+                      >
+                        +
+                      </button>
+                      <button
+                        className="remove"
+                        onClick={() => setCart(removeItem(cart, p.id))}
+                        aria-label={`Remove ${p.name}`}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                    {item.quantity === 9 && (
+                      <small>Maximum 9 per product.</small>
+                    )}
+                  </div>
+                  <strong>{money(p.price * item.quantity)}</strong>
+                </article>
+              );
+            })}
+          </div>
+          <aside className="summary">
+            <h2>Order summary</h2>
+            <label htmlFor="discount">Discount code</label>
+            <input
+              id="discount"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+            <p className="hint">
+              NORTH10: 10% off items on orders of ₹3,000 or more. Shipping is
+              excluded. Rounded down to the nearest paise.
+            </p>
+            {code && (
+              <p role="status">
+                {pricing.discount
+                  ? "Discount applied."
+                  : code.trim().toUpperCase() === "NORTH10"
+                    ? "Add ₹3,000 of items to qualify."
+                    : "Code not recognised."}
+              </p>
+            )}
+            <dl>
+              <div>
+                <dt>Subtotal</dt>
+                <dd>{money(pricing.subtotal)}</dd>
+              </div>
+              <div>
+                <dt>Discount</dt>
+                <dd>−{money(pricing.discount)}</dd>
+              </div>
+              <div>
+                <dt>Shipping</dt>
+                <dd>{pricing.shipping ? money(pricing.shipping) : "Free"}</dd>
+              </div>
+              <div className="total">
+                <dt>Total</dt>
+                <dd data-testid="payable-total">{money(pricing.total)}</dd>
+              </div>
+            </dl>
+            <p className="hint">
+              Shipping ₹99; free on item subtotals of ₹5,000 or more. Prices
+              include applicable demo taxes.
+            </p>
+            <button className="button wide" onClick={onCheckout}>
+              Continue to demo checkout
+            </button>
+            <small>No payment required. This is a demo store.</small>
+          </aside>
+        </div>
+      )}
+    </section>
+  );
+}

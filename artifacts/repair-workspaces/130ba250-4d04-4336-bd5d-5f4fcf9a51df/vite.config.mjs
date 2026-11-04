@@ -1,0 +1,2 @@
+import path from 'node:path';
+export default {resolve:{alias:{'react-dom/client':path.resolve('demo-shop/node_modules/react-dom/client.js'),'react-dom':path.resolve('demo-shop/node_modules/react-dom'),'react':path.resolve('demo-shop/node_modules/react')}},server:{fs:{allow:["C:\\Users\\KIIT\\Downloads\\META1\\artifacts\\repair-workspaces\\130ba250-4d04-4336-bd5d-5f4fcf9a51df",path.resolve('demo-shop/node_modules')]}}};

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "files": [
+    "src/Artwork.jsx",
+    "src/Cart.jsx",
+    "src/Checkout.jsx",
+    "src/main.jsx",
+    "src/persistence.js",
+    "src/pricing.js",
+    "src/products.js",
+    "src/style.css",
+    "src/useCart.js"
+  ],
+  "scenarios": {
+    "baseline": {
+      "description": "Correct storefront",
+      "test": null,
+      "expectedFailures": []
+    },
+    "stale-total": {
+      "description": "Removing an item leaves the payable total unchanged",
+      "test": "stale total after removal",
+      "expectedFailures": ["stale total after removal"]
+    },
+    "repeated-product": {
+      "description": "Quantities change but totals charge once per product",
+      "test": "repeated-product calculation",
+      "expectedFailures": [
+        "repeated-product calculation",
+        "quantity updates and limits"
+      ]
+    },
+    "wrong-removal": {
+      "description": "Removing a selected product removes the first cart product",
+      "test": "specific product removal",
+      "expectedFailures": [
+        "specific product removal",
+        "stale total after removal"
+      ]
+    }
+  }
+}

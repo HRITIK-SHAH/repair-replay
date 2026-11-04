@@ -1,0 +1,360 @@
+import React, { useState, useEffect, useRef } from "react";
+import { createRoot } from "react-dom/client";
+import { products, money } from "./products.js";
+import { priceCart } from "./pricing.js";
+import { useCart } from "./useCart.js";
+import Artwork from "./Artwork.jsx";
+import Cart from "./Cart.jsx";
+import Checkout from "./Checkout.jsx";
+import "./style.css";
+function App() {
+  const [cart, setCart] = useCart(),
+    [code, setCode] = useState(""),
+    [search, setSearch] = useState(""),
+    [category, setCategory] = useState("All"),
+    [sort, setSort] = useState("featured"),
+    [route, setRoute] = useState(
+      location.pathname !== "/" ? "#missing" : location.hash || "#home",
+    ),
+    [detail, setDetail] = useState(null),
+    [notice, setNotice] = useState(""),
+    [ordered, setOrdered] = useState(false);
+  const dialog = useRef(null),
+    opener = useRef(null);
+  useEffect(() => {
+    const fn = () => {
+      setRoute(location.hash || "#home");
+      window.scrollTo(0, 0);
+    };
+    addEventListener("hashchange", fn);
+    return () => removeEventListener("hashchange", fn);
+  }, []);
+  useEffect(() => {
+    if (detail) dialog.current.showModal();
+  }, [detail]);
+  const pricing = priceCart(cart, code);
+  const count = cart.reduce((s, x) => s + x.quantity, 0);
+  function add(p) {
+    const item = cart.find((x) => x.id === p.id);
+    if (item?.quantity === 9) {
+      setNotice(`Maximum 9 ${p.name} per order.`);
+      return;
+    }
+    setCart(
+      item
+        ? cart.map((x) =>
+            x.id === p.id ? { ...x, quantity: x.quantity + 1 } : x,
+          )
+        : [...cart, { id: p.id, quantity: 1 }],
+    );
+    setNotice(`${p.name} added to your bag.`);
+  }
+  function close() {
+    dialog.current.close();
+    setDetail(null);
+    opener.current?.focus();
+  }
+  const filtered = products
+    .filter(
+      (p) =>
+        p.name.toLowerCase().includes(search.toLowerCase()) &&
+        (category === "All" || p.category === category),
+    )
+    .sort((a, b) =>
+      sort === "low"
+        ? a.price - b.price
+        : sort === "high"
+          ? b.price - a.price
+          : sort === "name"
+            ? a.name.localeCompare(b.name)
+            : 0,
+    );
+  return (
+    <>
+      <div className="announcement">
+        Small upgrades. Better everyday.{" "}
+        <span>Free shipping on orders ₹5,000+</span>
+      </div>
+      <header>
+        <a className="brand" href="#home" aria-label="Northstar home">
+          <span>✳</span> northstar<span className="brand-dot">®</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#shop">Shop all</a>
+          <a href="#about">Our approach</a>
+        </nav>
+        <label className="search">
+          <span aria-hidden="true">⌕</span>
+          <input
+            aria-label="Search products"
+            placeholder="Find your next essential"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              location.hash = "shop";
+            }}
+          />
+        </label>
+        <a className="bag" href="#cart" aria-label={`Bag (${count})`}>
+          Bag <span>{count}</span>
+        </a>
+      </header>
+      <main id="main">
+        {route === "#home" || route === "#shop" ? (
+          <>
+            {route === "#home" && (
+              <section className="hero">
+                <div>
+                  <p className="eyebrow">THE EVERYDAY COLLECTION / 2026</p>
+                  <h1>
+                    Good design.
+                    <br />
+                    Great company.
+                  </h1>
+                  <p>
+                    Considered accessories for the way you
+                    <br className="desktop" /> work, listen, and move through
+                    life.
+                  </p>
+                  <a className="button" href="#shop">
+                    Find your everyday ↗
+                  </a>
+                  <div className="hero-note">
+                    <span>01 / 08</span> Meet Orbit. Your daily soundtrack.
+                  </div>
+                </div>
+                <div className="hero-art">
+                  <span className="vertical">DESIGNED FOR YOUR EVERYDAY</span>
+                  <Artwork product={products[0]} />
+                  <div className="hero-caption">
+                    <span>
+                      Orbit headphones
+                      <br />
+                      <strong>{money(products[0].price)}</strong>
+                    </span>
+                    <button
+                      aria-label="View Orbit headphones"
+                      onClick={(e) => {
+                        opener.current = e.currentTarget;
+                        setDetail(products[0]);
+                      }}
+                    >
+                      ↗
+                    </button>
+                  </div>
+                </div>
+              </section>
+            )}
+            <section className="catalog" id="collection">
+              <div className="section-heading">
+                <div>
+                  <p className="eyebrow">LESS CLUTTER. MORE POSSIBILITY.</p>
+                  <h2>Everyday essentials</h2>
+                </div>
+                <span>{filtered.length} thoughtfully chosen pieces</span>
+              </div>
+              <div className="catalog-toolbar">
+                <div className="categories" aria-label="Product categories">
+                  {["All", "Audio", "Workspace", "Charging", "Travel"].map(
+                    (c) => (
+                      <button
+                        aria-pressed={category === c}
+                        className={category === c ? "active" : ""}
+                        onClick={() => setCategory(c)}
+                        key={c}
+                      >
+                        {c === "All" ? "All products" : c}
+                      </button>
+                    ),
+                  )}
+                </div>
+                <label className="sort">
+                  Sort by{" "}
+                  <select
+                    aria-label="Sort products"
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                  >
+                    <option value="featured">Featured</option>
+                    <option value="low">Price: low to high</option>
+                    <option value="high">Price: high to low</option>
+                    <option value="name">Name: A to Z</option>
+                  </select>
+                </label>
+              </div>
+              <div className="product-grid">
+                {filtered.map((p, i) => (
+                  <article className="product" key={p.id}>
+                    <button
+                      className="product-image"
+                      style={{ background: p.color + "45" }}
+                      aria-label={`View ${p.name}`}
+                      onClick={(e) => {
+                        opener.current = e.currentTarget;
+                        setDetail(p);
+                      }}
+                    >
+                      <span className="product-number">
+                        N° 0{products.indexOf(p) + 1}
+                      </span>
+                      <Artwork product={p} />
+                      <span className="image-arrow">↗</span>
+                    </button>
+                    <div className="product-info">
+                      <p className="eyebrow">{p.category}</p>
+                      <h3>{p.name}</h3>
+                      <p>{money(p.price)}</p>
+                      <button
+                        className="add"
+                        aria-label={`Add ${p.name} to bag`}
+                        onClick={() => add(p)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              {!filtered.length && (
+                <div className="empty">
+                  <h3>No essentials found</h3>
+                  <p>Try another name or category.</p>
+                  <button
+                    onClick={() => {
+                      setSearch("");
+                      setCategory("All");
+                    }}
+                  >
+                    Clear search and filters
+                  </button>
+                </div>
+              )}
+            </section>
+            <section className="approach-banner">
+              <span>✳</span>
+              <h2>
+                A place for the things
+                <br />
+                you reach for every day.
+              </h2>
+              <a href="#about">Get to know Northstar ↗</a>
+            </section>
+          </>
+        ) : route === "#cart" ? (
+          <Cart
+            {...{ cart, setCart, pricing, code, setCode }}
+            onCheckout={() => (location.hash = "checkout")}
+          />
+        ) : route === "#checkout" ? (
+          <Checkout
+            cart={cart}
+            total={pricing.total}
+            onOrder={() => {
+              setOrdered(true);
+              setCart([]);
+              setCode("");
+              location.hash = "confirmation";
+            }}
+          />
+        ) : route === "#confirmation" && ordered ? (
+          <section className="empty confirmation">
+            <span className="confirm-icon">✓</span>
+            <p className="eyebrow">SIMULATION COMPLETE</p>
+            <h1>Thanks for stopping by.</h1>
+            <p>
+              Your simulated order is confirmed. No payment was taken,
+              <br /> no details were sent, and no products will be shipped.
+            </p>
+            <a className="button" href="#shop">
+              Continue exploring ↗
+            </a>
+          </section>
+        ) : route === "#about" ? (
+          <section className="about">
+            <p className="eyebrow">OUR APPROACH</p>
+            <h1>
+              Thoughtful things.
+              <br />
+              Everyday purpose.
+            </h1>
+            <p>
+              Northstar is a fictional consumer-tech accessories store built for
+              local shopping demonstrations. Our collection explores simple
+              forms, soft colours, and useful everyday objects.
+            </p>
+            <p>
+              All products are fictional. Orders are simulated in your browser.
+              The only data saved is your shopping bag on this device.
+            </p>
+            <a className="button" href="#shop">
+              Explore the collection ↗
+            </a>
+          </section>
+        ) : (
+          <section className="empty">
+            <h1>Page not found</h1>
+            <a className="button" href="#home">
+              Back to Northstar
+            </a>
+          </section>
+        )}
+      </main>
+      <footer>
+        <a className="brand" href="#home">
+          ✳ northstar
+        </a>
+        <p>Everyday, considered.</p>
+        <a href="#about">About this demo ↗</a>
+        <small>© 2026 Northstar. A fictional store.</small>
+      </footer>
+      <div className="toast" role="status" aria-live="polite">
+        {notice}
+      </div>
+      {detail && (
+        <dialog
+          ref={dialog}
+          onKeyDown={(e) => {
+            if (e.key !== "Tab") return;
+            const buttons = dialog.current.querySelectorAll("button");
+            const first = buttons[0],
+              last = buttons[buttons.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }}
+          onCancel={(e) => {
+            e.preventDefault();
+            close();
+          }}
+          aria-labelledby="detail-title"
+        >
+          <button
+            className="dialog-close"
+            aria-label="Close product details"
+            onClick={close}
+          >
+            ×
+          </button>
+          <div
+            className="detail-art"
+            style={{ background: detail.color + "55" }}
+          >
+            <Artwork product={detail} />
+          </div>
+          <p className="eyebrow">{detail.category}</p>
+          <h2 id="detail-title">{detail.name}</h2>
+          <p>{detail.description}</p>
+          <strong>{money(detail.price)}</strong>
+          <button className="button wide" onClick={() => add(detail)}>
+            Add {detail.name} to bag
+          </button>
+        </dialog>
+      )}
+    </>
+  );
+}
+createRoot(document.getElementById("root")).render(<App />);

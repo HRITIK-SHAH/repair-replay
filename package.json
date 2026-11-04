@@ -1,0 +1,16 @@
+{
+  "name": "northstar-repair-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix demo-shop run dev",
+    "build": "npm --prefix demo-shop run build",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "fixture": "node tools/fixture.mjs",
+    "verify:fixtures": "node tools/verify-fixtures.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0"
+  }
+}
